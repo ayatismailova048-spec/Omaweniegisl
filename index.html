@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f5a47">
+<title>Тахара — омовение и гусль</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f2e8; --card:#fffdf7; --ink:#1d2b26; --muted:#5c6b64; --line:#e4dcc6;
+  --green:#0f5a47; --green2:#1b7a62; --gold:#b8892b; --goldbg:#f7ecd0;
+  --red:#a8402f; --redbg:#f9e5e0; --blue:#2a5c8a; --bluebg:#e3eef8;
+  --shadow:0 2px 14px rgba(15,60,45,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#10201b;--card:#17302a;--ink:#eef2ea;--muted:#a3b5ac;--line:#2a463d;
+  --green:#4fc3a0;--green2:#2f9c7c;--gold:#e0b256;--goldbg:#3a3320;--red:#ff9a86;--redbg:#3d2420;--blue:#8dc1f0;--bluebg:#1d3249;--shadow:none}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:Lora,Georgia,serif;line-height:1.25;margin:0 0 .5em}
+a{color:var(--green)}
+.ar{font-family:Amiri,"Traditional Arabic",serif;direction:rtl;font-size:1.5em;line-height:1.9}
+
+/* header */
+header{background:linear-gradient(160deg,#0b4636,#14705a 70%,#1b7a62);color:#fff;position:relative;overflow:hidden;padding:34px 18px 26px;text-align:center}
+header::before{content:"";position:absolute;inset:0;opacity:.09;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 2l8 20 20 8-20 8-8 20-8-20L2 30l20-8z' fill='none' stroke='%23fff' stroke-width='1.2'/%3E%3Ccircle cx='30' cy='30' r='6' fill='none' stroke='%23fff'/%3E%3C/svg%3E")}
+header>*{position:relative}
+header .bism{font-family:Amiri,serif;font-size:30px;direction:rtl;color:#f4e2a8;margin-bottom:4px}
+header h1{font-size:30px;margin:0}
+header p{margin:6px auto 0;max-width:560px;opacity:.9;font-size:15px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:8px 12px;max-width:980px;margin:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:transparent;color:var(--muted);font:600 14px Inter,sans-serif;padding:9px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tab:hover{background:var(--goldbg)}
+.tab.on{background:var(--green);color:#fff}
+@media (prefers-color-scheme:dark){.tab.on{color:#0b2a21}}
+
+main{max-width:980px;margin:auto;padding:20px 16px 60px}
+section.page{display:none;animation:fade .25s ease}
+section.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+h2{font-size:26px;color:var(--green);padding-bottom:8px;border-bottom:2px solid var(--gold);display:inline-block;margin-top:6px}
+h3{font-size:20px;margin-top:1.4em}
+.lead{color:var(--muted);margin-top:0}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:14px 0;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tile{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);cursor:pointer;transition:.15s;text-align:left;font:inherit;width:100%}
+.tile:hover{transform:translateY(-2px);border-color:var(--gold)}
+.tile .ico{font-size:30px}
+.tile h3{margin:.3em 0 .2em;color:var(--green)}
+.tile p{margin:0;color:var(--muted);font-size:15px}
+
+.note,.warn,.info{border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px;border-left:5px solid}
+.note{background:var(--goldbg);border-color:var(--gold)}
+.warn{background:var(--redbg);border-color:var(--red)}
+.info{background:var(--bluebg);border-color:var(--blue)}
+.note b:first-child,.warn b:first-child,.info b:first-child{display:block;margin-bottom:2px}
+
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;vertical-align:middle;margin-left:6px;letter-spacing:.2px}
+.b-fard{background:var(--green);color:#fff}
+.b-sunna{background:var(--goldbg);color:var(--gold);border:1px solid var(--gold)}
+.b-diff{background:var(--bluebg);color:var(--blue);border:1px solid var(--blue)}
+@media (prefers-color-scheme:dark){.b-fard{color:#0b2a21}}
+
+/* steps */
+.progress{position:sticky;top:57px;z-index:10;background:var(--bg);padding:8px 0}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green2),var(--gold));transition:width .3s}
+.progress small{color:var(--muted)}
+.progress button{float:right;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:2px 10px;cursor:pointer;font-size:13px}
+.step{display:flex;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.step .n{flex:0 0 42px;height:42px;border-radius:50%;background:var(--goldbg);color:var(--gold);display:grid;place-items:center;font:700 18px Lora,serif;border:2px solid var(--gold)}
+.step.done{opacity:.6;border-color:var(--green2)}
+.step.done .n{background:var(--green);color:#fff;border-color:var(--green)}
+.step.done .n::after{content:"✓"}
+.step.done .n span{display:none}
+.step h3{margin:0 0 4px;font-size:18px}
+.step p{margin:4px 0;font-size:15.5px}
+.step .count{font-size:13px;color:var(--muted)}
+.step ul{margin:6px 0 0;padding-left:20px;font-size:15px;color:var(--muted)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{border:1.5px solid var(--green);background:transparent;color:var(--green);padding:7px 14px;border-radius:999px;font:600 14px Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--green);color:#fff}
+@media (prefers-color-scheme:dark){.chip.on{color:#0b2a21}}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card);margin:12px 0;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--green);color:#fff;font-weight:600;position:sticky;top:0}
+@media (prefers-color-scheme:dark){th{color:#0b2a21}}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;background:rgba(184,137,43,.08);min-width:150px}
+.y{color:var(--red);font-weight:600}
+.n0{color:var(--green2);font-weight:600}
+body[data-m="hanafi"] [data-c="hanafi"]:not(th),
+body[data-m="maliki"] [data-c="maliki"]:not(th),
+body[data-m="shafii"] [data-c="shafii"]:not(th),
+body[data-m="hanbali"] [data-c="hanbali"]:not(th){background:var(--goldbg);outline:2px solid var(--gold);outline-offset:-2px}
+#mysum{display:none}
+body[data-m] #mysum{display:block}
+
+/* details */
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;box-shadow:var(--shadow)}
+summary{cursor:pointer;padding:14px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--gold);font-size:20px;line-height:1}
+details[open] summary::after{content:"−"}
+details .body{padding:0 18px 16px;font-size:15.5px}
+.src{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+blockquote{margin:10px 0;padding:10px 16px;border-left:4px solid var(--gold);background:var(--goldbg);border-radius:0 10px 10px 0;font-size:15.5px}
+ul.clean{padding-left:20px}
+ul.clean li{margin:5px 0}
+.dua{text-align:center;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-radius:16px;padding:18px;margin:14px 0}
+.dua .ar{color:#f4e2a8}
+.dua small{display:block;opacity:.9;font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:13.5px;padding:24px 16px;border-top:1px solid var(--line);max-width:760px;margin:auto}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bism">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+  <h1>Тахара: омовение и гусль</h1>
+  <p>Пошаговое руководство, правила, что нарушает очищение, мнения четырёх мазхабов и доводы</p>
+</header>
+
+<nav><div class="tabs" id="tabs">
+  <button class="tab on" data-p="home">Главная</button>
+  <button class="tab" data-p="wudu">Омовение (вуду)</button>
+  <button class="tab" data-p="ghusl">Гусль</button>
+  <button class="tab" data-p="breaks">Что нарушает</button>
+  <button class="tab" data-p="madhhab">Мазхабы</button>
+  <button class="tab" data-p="proofs">Доводы</button>
+  <button class="tab" data-p="more">Дополнительно</button>
+</div></nav>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="page on" id="home">
+  <h2>Добро пожаловать</h2>
+  <p class="lead">Очищение (тахара) — ключ к молитве. Пророк ﷺ сказал: «Ключ к молитве — очищение» (Абу Дауд, Тирмизи). Здесь собрано всё самое нужное в понятном виде.</p>
+
+  <div class="grid">
+    <button class="tile" data-go="wudu"><div class="ico">💧</div><h3>Омовение (вуду)</h3><p>Пошаговый порядок с отметками, фарды и сунны, дуа.</p></button>
+    <button class="tile" data-go="ghusl"><div class="ico">🚿</div><h3>Гусль</h3><p>Когда обязателен, как совершать, порядок действий.</p></button>
+    <button class="tile" data-go="breaks"><div class="ico">⚠️</div><h3>Что нарушает</h3><p>Нарушители омовения и гусля, что делать при сомнении.</p></button>
+    <button class="tile" data-go="madhhab"><div class="ico">⚖️</div><h3>Мазхабы</h3><p>Ханафитский, маликитский, шафиитский, ханбалитский — сравнение.</p></button>
+    <button class="tile" data-go="proofs"><div class="ico">📖</div><h3>Доводы</h3><p>Аяты и хадисы, на которых основаны правила.</p></button>
+    <button class="tile" data-go="more"><div class="ico">🧰</div><h3>Дополнительно</h3><p>Протирание хуффов, тайаммум, вода, частые ошибки.</p></button>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">Выберите свой мазхаб</h3>
+    <p style="margin:0 0 6px;color:var(--muted);font-size:15px">Колонка вашего мазхаба будет подсвечена во всех таблицах.</p>
+    <div class="chips" id="mchips">
+      <button class="chip" data-m="hanafi">Ханафитский</button>
+      <button class="chip" data-m="maliki">Маликитский</button>
+      <button class="chip" data-m="shafii">Шафиитский</button>
+      <button class="chip" data-m="hanbali">Ханбалитский</button>
+      <button class="chip" data-m="">Не выбрано</button>
+    </div>
+    <div id="mysum" class="note"></div>
+  </div>
+
+  <div class="note"><b>Важно</b>Приложение — справочное. В вопросах, где есть разногласия, придерживайтесь мазхаба, которому вы следуете, и обращайтесь к компетентному учёному. В сложных частных случаях (болезнь, постоянное выделение, повязки) задайте вопрос знающему человеку.</div>
+</section>
+
+<!-- ============ WUDU ============ -->
+<section class="page" id="wudu">
+  <h2>Омовение (вуду)</h2>
+  <p class="lead">Нажимайте на шаги, чтобы отмечать выполненные. Метки: <span class="badge b-fard">Фард</span> — обязательно, <span class="badge b-sunna">Сунна</span> — желательно, <span class="badge b-diff">Мазхабы</span> — мнения расходятся.</p>
+
+  <div class="note"><b>Условия действительности омовения</b>
+    Мусульманин; в здравом уме; достигший совершеннолетия (для обязательности); чистая вода (мутлак), не изменённая нечистотой; отсутствие преград на коже (краска-слой, воск, лак для ногтей, плотный клей и т. п.), не пропускающих воду.</div>
+
+  <div class="progress">
+    <div class="bar"><i id="wbar"></i></div>
+    <button id="wreset">Сбросить</button><small id="wtxt">0 из 10</small>
+  </div>
+
+  <div id="wsteps">
+    <div class="step"><div class="n"><span>1</span></div><div>
+      <h3>Намерение (нийя) <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Решите сердцем совершить омовение для молитвы или для снятия состояния хадас. Произносить вслух не нужно.</p>
+      <p class="count">Фард у маликитов и шафиитов, условие у ханбалитов, сунна у ханафитов.</p></div></div>
+
+    <div class="step"><div class="n"><span>2</span></div><div>
+      <h3>«Бисмиллях» <span class="badge b-sunna">Сунна</span></h3>
+      <p>Скажите: <i>«Бисмилляhи»</i> (بسم الله).</p>
+      <p class="count">Есть мнение ханбалитов о её обязательности при памяти — однако большинство считает сунной.</p></div></div>
+
+    <div class="step"><div class="n"><span>3</span></div><div>
+      <h3>Вымыть кисти рук ×3 <span class="badge b-sunna">Сунна</span></h3>
+      <p>До запястий, с промыванием между пальцами.</p>
+      <p class="count">3 раза</p></div></div>
+
+    <div class="step"><div class="n"><span>4</span></div><div>
+      <h3>Прополоскать рот ×3 <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Желательно использовать мисвак (зубную палочку) или почистить зубы.</p>
+      <p class="count">Сунна у большинства; часть лица (фард) у ханбалитов.</p></div></div>
+
+    <div class="step"><div class="n"><span>5</span></div><div>
+      <h3>Втянуть воду носом и высморкаться ×3 <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Втягивайте воду правой рукой, высмаркивайтесь левой. Постящемуся — не слишком глубоко.</p>
+      <p class="count">Сунна у большинства; фард у ханбалитов.</p></div></div>
+
+    <div class="step"><div class="n"><span>6</span></div><div>
+      <h3>Вымыть лицо ×3 <span class="badge b-fard">Фард</span></h3>
+      <ul>
+        <li>В длину: от места, где обычно растут волосы, до подбородка.</li>
+        <li>В ширину: от мочки одного уха до мочки другого.</li>
+        <li>Густую бороду пропустите между пальцами (сунна), кожу под редкой бородой промывать обязательно.</li>
+      </ul></div></div>
+
+    <div class="step"><div class="n"><span>7</span></div><div>
+      <h3>Вымыть руки до локтей включительно ×3 <span class="badge b-fard">Фард</span></h3>
+      <p>Сначала правую, затем левую. Локти входят в мытьё. Снимите кольца либо подвиньте их, чтобы вода дошла до кожи.</p></div></div>
+
+    <div class="step"><div class="n"><span>8</span></div><div>
+      <h3>Протереть голову (мас'х) <span class="badge b-fard">Фард</span> <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Смочите руки и проведите ладонями от лба к затылку и обратно (один раз). Затем протрите уши: указательными — внутреннюю часть, большими — наружную.</p>
+      <p class="count">Объём фарда: ханафиты — четверть головы; шафииты — часть (хотя бы несколько волос); маликиты и ханбалиты — вся голова.</p></div></div>
+
+    <div class="step"><div class="n"><span>9</span></div><div>
+      <h3>Вымыть ноги до щиколоток включительно ×3 <span class="badge b-fard">Фард</span></h3>
+      <p>Сначала правую, затем левую. Промойте между пальцами (мизинцем левой руки), обязательно промывайте пятки.</p>
+      <p class="count">«Горе пяткам от Огня!» (аль-Бухари, Муслим).</p></div></div>
+
+    <div class="step"><div class="n"><span>10</span></div><div>
+      <h3>Дуа после омовения <span class="badge b-sunna">Сунна</span></h3>
+      <div class="dua"><div class="ar">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</div>
+        <small>«Ашхаду ан ля иляха илляллаху вахдаху ля шарика лях, ва ашхаду анна Мухаммадан 'абдуху ва расулюх»</small>
+        <small>Свидетельствую, что нет божества, кроме Аллаха, Единого, у Которого нет сотоварища, и свидетельствую, что Мухаммад — Его раб и посланник.</small></div>
+      <p class="count">Передаётся, что для произнёсшего это открываются восемь врат Рая (Муслим 234).</p></div></div>
+  </div>
+
+  <h3>Фарды омовения по мазхабам</h3>
+  <div class="tw"><table>
+    <tr><th>Мазхаб</th><th>Кол-во</th><th>Фарды</th></tr>
+    <tr><td data-c="hanafi">Ханафитский</td><td>4</td><td>Лицо; руки до локтей; мас'х четверти головы; ноги до щиколоток</td></tr>
+    <tr><td data-c="maliki">Маликитский</td><td>7</td><td>Намерение; лицо; руки; мас'х всей головы; ноги; непрерывность (муваляат); растирание (далк)</td></tr>
+    <tr><td data-c="shafii">Шафиитский</td><td>6</td><td>Намерение; лицо; руки; мас'х части головы; ноги; последовательность (тартиб)</td></tr>
+    <tr><td data-c="hanbali">Ханбалитский</td><td>6</td><td>Лицо (вкл. полоскание рта и носа); руки; мас'х всей головы (вкл. уши); ноги; тартиб; муваляат. Намерение — условие</td></tr>
+  </table></div>
+
+  <h3>Сунны омовения</h3>
+  <ul class="clean">
+    <li>Мисвак; «Бисмиллях» в начале;</li>
+    <li>начинать с правой стороны;</li>
+    <li>трёхкратное мытьё; не расточительствовать в воде;</li>
+    <li>пропускать пальцы через бороду и между пальцами рук и ног;</li>
+    <li>соблюдать последовательность и непрерывность (там, где они не фард);</li>
+    <li>обратиться к кибле, дуа после омовения, два раката «тахийят аль-вуду» (по ряду мнений).</li>
+  </ul>
+
+  <div class="warn"><b>Нельзя</b>Расточительствовать воду и мыть органы более трёх раз — это нежелательно (макрух).</div>
+</section>
+
+<!-- ============ GHUSL ============ -->
+<section class="page" id="ghusl">
+  <h2>Гусль (полное омовение)</h2>
+  <p class="lead">Гусль — омовение всего тела. Обязателен после состояния большой нечистоты (джунуб, хайд, нифас).</p>
+
+  <h3>Когда гусль обязателен</h3>
+  <div class="card"><ul class="clean" style="margin:0">
+    <li><b>Половая близость</b> (проникновение), даже без семяизвержения — по единому мнению.</li>
+    <li><b>Выход семени (мани)</b> — во сне или наяву. Условия — см. таблицу ниже.</li>
+    <li><b>Окончание месячных (хайд)</b>.</li>
+    <li><b>Окончание послеродового кровотечения (нифас)</b>.</li>
+    <li><b>Смерть мусульманина</b> — гусль покойного (общая обязанность, фард кифая).</li>
+    <li><b>Принятие Ислама</b> — обязательно у маликитов и ханбалитов, желательно у ханафитов и шафиитов.</li>
+  </ul></div>
+
+  <div class="progress">
+    <div class="bar"><i id="gbar"></i></div>
+    <button id="greset">Сбросить</button><small id="gtxt">0 из 8</small>
+  </div>
+
+  <h3>Порядок действий (по хадису Маймуны, да будет доволен ею Аллах)</h3>
+  <div id="gsteps">
+    <div class="step"><div class="n"><span>1</span></div><div>
+      <h3>Намерение <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Сердцем: «Совершаю гусль для снятия состояния джунуб (хайд, нифас)». Фард у маликитов, шафиитов; условие у ханбалитов; сунна у ханафитов.</p></div></div>
+
+    <div class="step"><div class="n"><span>2</span></div><div>
+      <h3>«Бисмиллях» и мытьё кистей ×3 <span class="badge b-sunna">Сунна</span></h3>
+      <p>Вымойте руки до запястий три раза.</p></div></div>
+
+    <div class="step"><div class="n"><span>3</span></div><div>
+      <h3>Смыть нечистоту с тела <span class="badge b-sunna">Сунна</span></h3>
+      <p>Вымойте срамные места и всё, на что попала нечистота (мани, мадхи, кровь), левой рукой.</p></div></div>
+
+    <div class="step"><div class="n"><span>4</span></div><div>
+      <h3>Совершить обычное омовение (вуду) <span class="badge b-sunna">Сунна</span></h3>
+      <p>Как для молитвы. Ноги можно вымыть в самом конце, если вы стоите там, где собирается вода.</p></div></div>
+
+    <div class="step"><div class="n"><span>5</span></div><div>
+      <h3>Рот и нос <span class="badge b-diff">Мазхабы</span></h3>
+      <p>Если не сделали этого в омовении — прополощите рот и втяните воду носом. Фард у ханафитов и ханбалитов, сунна у маликитов и шафиитов — но лучше не пропускать никогда.</p></div></div>
+
+    <div class="step"><div class="n"><span>6</span></div><div>
+      <h3>Облить голову ×3 <span class="badge b-fard">Фард</span></h3>
+      <p>Пропустите воду до корней волос, пальцами промойте волосы и бороду.</p>
+      <p class="count">Женщине не нужно распускать косу, если вода доходит до корней волос (Муслим 330). Ханбалиты рекомендуют распускать после месячных и нифаса.</p></div></div>
+
+    <div class="step"><div class="n"><span>7</span></div><div>
+      <h3>Облить тело: сначала правую сторону, затем левую <span class="badge b-fard">Фард</span></h3>
+      <p>Вода должна достичь всех участков кожи: пупок, подмышки, за ушами, складки, между пальцами, пятки. Тело потереть рукой (фард у маликитов).</p></div></div>
+
+    <div class="step"><div class="n"><span>8</span></div><div>
+      <h3>Не расточительствовать <span class="badge b-sunna">Сунна</span></h3>
+      <p>Пророк ﷺ мылся примерно са' воды (около 2–3 литров), а омовение совершал примерно муддом (около 0,5–0,7 л).</p></div></div>
+  </div>
+
+  <h3>Фарды гусля по мазхабам</h3>
+  <div class="tw"><table>
+    <tr><th>Мазхаб</th><th>Фарды</th></tr>
+    <tr><td data-c="hanafi">Ханафитский</td><td>3: полоскание рта; втягивание воды носом; омовение всего тела</td></tr>
+    <tr><td data-c="maliki">Маликитский</td><td>Намерение; облить всё тело; растирание (далк); непрерывность; пропуск воды через волосы (тахлиль)</td></tr>
+    <tr><td data-c="shafii">Шафиитский</td><td>2: намерение; облить всё тело (кожа и волосы)</td></tr>
+    <tr><td data-c="hanbali">Ханбалитский</td><td>Облить всё тело, включая полоскание рта и носа. Намерение — условие</td></tr>
+  </table></div>
+
+  <h3>Причины гусля по мазхабам</h3>
+  <div class="tw"><table>
+    <tr><th>Причина</th><th data-c="hanafi">Ханафиты</th><th data-c="maliki">Малики</th><th data-c="shafii">Шафииты</th><th data-c="hanbali">Ханбалиты</th></tr>
+    <tr><td>Проникновение</td><td colspan="4" style="text-align:center">Обязателен у всех, даже без семяизвержения</td></tr>
+    <tr><td>Мани без страсти (болезнь, холод)</td><td data-c="hanafi" class="n0">Не обязателен</td><td data-c="maliki" class="n0">Не обязателен</td><td data-c="shafii" class="y">Обязателен</td><td data-c="hanbali" class="n0">Не обязателен</td></tr>
+    <tr><td>Мани со страстью</td><td colspan="4" style="text-align:center">Обязателен у всех</td></tr>
+    <tr><td>Принятие Ислама</td><td data-c="hanafi">Желателен</td><td data-c="maliki" class="y">Обязателен</td><td data-c="shafii">Желателен</td><td data-c="hanbali" class="y">Обязателен</td></tr>
+    <tr><td>Пятничный гусль</td><td data-c="hanafi">Мустахабб</td><td data-c="maliki">Сунна</td><td data-c="shafii">Сунна муаккада</td><td data-c="hanbali">Сунна</td></tr>
+  </table></div>
+
+  <div class="info"><b>Сон и следы</b>Если проснулись и видите влагу, а сна не помните — гусль обязателен. Если помните сновидение, но следов нет — гусль не нужен (хадис Умм Салямы, аль-Бухари 282, Муслим 313). Мадхи (прозрачные выделения при возбуждении) требуют мытья нечистоты и омовения, но не гусля.</div>
+
+  <h3>Нельзя в состоянии джунуб</h3>
+  <ul class="clean">
+    <li>Совершать молитву и обход Каабы (тауаф);</li>
+    <li>касаться мусхафа (большинство учёных);</li>
+    <li>читать Коран (ханафиты, шафииты, ханбалиты запрещают; маликиты допускают в известных пределах);</li>
+    <li>находиться в мечети (кроме прохода — по мнению большинства).</li>
+  </ul>
+
+  <div class="note"><b>Желательный гусль (сунна)</b>Перед пятничной молитвой, перед молитвой Ида, перед ихрамом, при вступлении в Мекку, после мытья покойного — по мнению ряда учёных.</div>
+</section>
+
+<!-- ============ BREAKS ============ -->
+<section class="page" id="breaks">
+  <h2>Что нарушает очищение</h2>
+  <p class="lead">Выбранный вами мазхаб подсвечивается в таблице. Выбрать его можно на главной.</p>
+
+  <div class="chips">
+    <button class="chip" data-m="hanafi">Ханафитский</button>
+    <button class="chip" data-m="maliki">Маликитский</button>
+    <button class="chip" data-m="shafii">Шафиитский</button>
+    <button class="chip" data-m="hanbali">Ханбалитский</button>
+  </div>
+
+  <h3>Нарушители омовения</h3>
+  <div class="tw"><table>
+    <tr><th>Нарушитель</th><th data-c="hanafi">Ханафиты</th><th data-c="maliki">Малики</th><th data-c="shafii">Шафииты</th><th data-c="hanbali">Ханбалиты</th></tr>
+    <tr><td>Моча, кал, ветры, мадхи, вади — всё, что выходит из передних и задних проходов</td><td colspan="4" class="y" style="text-align:center">Нарушает (единогласно)</td></tr>
+    <tr><td>Глубокий сон лёжа / потеря сознания / опьянение / безумие</td><td colspan="4" class="y" style="text-align:center">Нарушает (единогласно)</td></tr>
+    <tr><td>Лёгкая дрёма сидя, плотно прижавшись к земле</td><td colspan="4" class="n0" style="text-align:center">Не нарушает (при плотном сидении)</td></tr>
+    <tr><td>Прикосновение к чужой женщине (не махрам)</td><td data-c="hanafi" class="n0">Не нарушает</td><td data-c="maliki">Нарушает при желании</td><td data-c="shafii" class="y">Нарушает (кожа к коже)</td><td data-c="hanbali">Нарушает при желании</td></tr>
+    <tr><td>Прикосновение рукой к собственному половому органу</td><td data-c="hanafi" class="n0">Не нарушает</td><td data-c="maliki" class="y">Нарушает (обычно)</td><td data-c="shafii" class="y">Нарушает (ладонью)</td><td data-c="hanbali" class="y">Нарушает</td></tr>
+    <tr><td>Текущая кровь / рвота полным ртом</td><td data-c="hanafi" class="y">Нарушает</td><td data-c="maliki" class="n0">Не нарушает</td><td data-c="shafii" class="n0">Не нарушает</td><td data-c="hanbali">Нарушает, если очень обильное</td></tr>
+    <tr><td>Громкий смех в молитве</td><td data-c="hanafi" class="y">Нарушает омовение</td><td data-c="maliki" class="n0">Нет (молитва нарушена)</td><td data-c="shafii" class="n0">Нет (молитва нарушена)</td><td data-c="hanbali" class="n0">Нет (молитва нарушена)</td></tr>
+    <tr><td>Верблюжье мясо</td><td data-c="hanafi" class="n0">Не нарушает</td><td data-c="maliki" class="n0">Не нарушает</td><td data-c="shafii" class="n0">Не нарушает</td><td data-c="hanbali" class="y">Нарушает</td></tr>
+  </table></div>
+
+  <h3>Что не нарушает омовение</h3>
+  <ul class="clean">
+    <li>Стрижка волос и ногтей, снятие кожи;</li>
+    <li>разговор, смех вне молитвы, еда, поцелуй в щёку без желания;</li>
+    <li>сомнения без уверенности — см. ниже.</li>
+  </ul>
+
+  <div class="info"><b>Правило сомнения</b>«Уверенность не снимается сомнением». Если вы твёрдо знаете, что были в омовении, и сомневаетесь, нарушили ли его — вы по-прежнему в омовении. И наоборот. Основа — хадис: «…пусть не выходит, пока не услышит звук или не почувствует запах» (аль-Бухари 137, Муслим 361).</div>
+
+  <h3>Что нарушает гусль</h3>
+  <p>Гусль нарушается так же, как и омовение, но требует повторения только при новой причине (джунуб, хайд, нифас). Если человек совершил гусль и затем что-то нарушило омовение — достаточно просто вуду.</p>
+
+  <h3>Что делает омовение недействительным (от чего портится)</h3>
+  <div class="grid">
+    <div class="card"><b>🚫 Преграда на коже</b><br>Лак, краска, воск, клей, «наращённые» ногти — вода не доходит до кожи.</div>
+    <div class="card"><b>🚫 Пропущенное место</b><br>Пятки, локти, внутренние уголки глаз, места между пальцами.</div>
+    <div class="card"><b>🚫 Неправильный порядок</b><br>Нарушение тартиба — недействительно у шафиитов и ханбалитов.</div>
+    <div class="card"><b>🚫 Затянутый перерыв</b><br>Долгое ожидание до высыхания — недействительно у маликитов и ханбалитов.</div>
+  </div>
+</section>
+
+<!-- ============ MADHHAB ============ -->
+<section class="page" id="madhhab">
+  <h2>Мнения мазхабов</h2>
+  <p class="lead">Расхождения между мазхабами — это милость и результат различного понимания первоисточников. Следуйте своему мазхабу.</p>
+
+  <div class="chips">
+    <button class="chip" data-m="hanafi">Ханафитский</button>
+    <button class="chip" data-m="maliki">Маликитский</button>
+    <button class="chip" data-m="shafii">Шафиитский</button>
+    <button class="chip" data-m="hanbali">Ханбалитский</button>
+  </div>
+
+  <h3>Омовение: сравнение</h3>
+  <div class="tw"><table>
+    <tr><th>Вопрос</th><th data-c="hanafi">Ханафиты</th><th data-c="maliki">Малики</th><th data-c="shafii">Шафииты</th><th data-c="hanbali">Ханбалиты</th></tr>
+    <tr><td>Намерение</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Фард</td><td data-c="shafii">Фард</td><td data-c="hanbali">Условие</td></tr>
+    <tr><td>Объём мас'ха головы</td><td data-c="hanafi">Четверть</td><td data-c="maliki">Вся голова</td><td data-c="shafii">Часть (хоть волосы)</td><td data-c="hanbali">Вся голова</td></tr>
+    <tr><td>Последовательность (тартиб)</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Сунна</td><td data-c="shafii">Фард</td><td data-c="hanbali">Фард</td></tr>
+    <tr><td>Непрерывность (муваляат)</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Фард</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Фард</td></tr>
+    <tr><td>Растирание (далк)</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Фард</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Сунна</td></tr>
+    <tr><td>Полоскание рта и носа</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Сунна</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Фард</td></tr>
+    <tr><td>«Бисмиллях»</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Желательна</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Обязательна при памяти (в одной версии)</td></tr>
+    <tr><td>Всего фардов</td><td data-c="hanafi">4</td><td data-c="maliki">7</td><td data-c="shafii">6</td><td data-c="hanbali">6</td></tr>
+  </table></div>
+
+  <h3>Гусль: сравнение</h3>
+  <div class="tw"><table>
+    <tr><th>Вопрос</th><th data-c="hanafi">Ханафиты</th><th data-c="maliki">Малики</th><th data-c="shafii">Шафииты</th><th data-c="hanbali">Ханбалиты</th></tr>
+    <tr><td>Намерение</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Фард</td><td data-c="shafii">Фард</td><td data-c="hanbali">Условие</td></tr>
+    <tr><td>Полоскание рта и носа</td><td data-c="hanafi">Фард</td><td data-c="maliki">Сунна</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Фард</td></tr>
+    <tr><td>Растирание тела</td><td data-c="hanafi">Не фард</td><td data-c="maliki">Фард</td><td data-c="shafii">Не фард</td><td data-c="hanbali">Не фард</td></tr>
+    <tr><td>Непрерывность</td><td data-c="hanafi">Сунна</td><td data-c="maliki">Фард</td><td data-c="shafii">Сунна</td><td data-c="hanbali">Фард</td></tr>
+    <tr><td>Обязателен ли отдельный вуду</td><td colspan="4" style="text-align:center">Нет, гусль включает омовение (по большинству), но вуду перед гуслем — сунна</td></tr>
+  </table></div>
+
+  <h3>Спорные вопросы — кратко и по существу</h3>
+  <details><summary>Прикосновение к женщине</summary><div class="body">
+    Шафииты: нарушает любое прикосновение кожи к коже с чужой женщиной (не махрам), основываясь на аяте «или вы касались женщин» (5:6).
+    Ханафиты: «касание» в аяте означает близость, поэтому простое касание не нарушает.
+    Маликиты и ханбалиты: нарушает, если было с вожделением.</div></details>
+  <details><summary>Прикосновение к половому органу</summary><div class="body">
+    Большинство (маликиты, шафииты, ханбалиты) — нарушает, по хадису Бусры бинт Сафван. Ханафиты — не нарушает, по хадису Тальк ибн Али: «Это всего лишь часть тебя».</div></details>
+  <details><summary>Кровь и рвота</summary><div class="body">
+    Ханафиты считают, что текущая кровь и рвота нарушают омовение. Остальные — нет, считая, что основа — сохранение чистоты, пока нет ясного довода.</div></details>
+  <details><summary>Верблюжье мясо</summary><div class="body">
+    Ханбалиты — нарушает, по хадису Джабира ибн Самуры (Муслим). Остальные трактуют приказ как желательный или как относящийся к мытью рук.</div></details>
+  <details><summary>Сколько мас'ха головы</summary><div class="body">
+    Ханафиты — четверть (хадис о протирании аль-Мугирой передней части головы). Шафииты — любая часть («протирайте ваши головы», 5:6). Маликиты и ханбалиты — вся голова, по описанию омовения Пророка ﷺ.</div></details>
+</section>
+
+<!-- ============ PROOFS ============ -->
+<section class="page" id="proofs">
+  <h2>Доводы</h2>
+  <p class="lead">Основные аяты и хадисы по теме очищения.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0">Аят об омовении, гусле и тайаммуме</h3>
+    <div class="ar" style="text-align:center">يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ ۚ وَإِنْ كُنْتُمْ جُنُبًا فَاطَّهَّرُوا</div>
+    <blockquote>«О те, которые уверовали! Когда вы встаёте на молитву, то мойте ваши лица и руки до локтей, и протирайте ваши головы, и ноги до щиколоток. А если вы в состоянии джунуб, то очищайтесь» (Коран, 5:6)</blockquote>
+    <p>Из аята: четыре фарда омовения и обязательность гусля после джунуб. Расхождение о «ваши ноги» (чтение «арджулякум» с фатхой — мытьё; с кясрой — протирание хуффов) решается хадисами о мытье ног.</p>
+  </div>
+
+  <h3>Омовение</h3>
+  <details open><summary>Без очищения молитва не принимается</summary><div class="body">
+    «Аллах не примет молитву того, кто совершил хадас, пока он не совершит омовение» (аль-Бухари 135, Муслим 225).
+    <span class="src">Довод обязательности омовения для молитвы.</span></div></details>
+  <details><summary>Описание омовения Усманом ибн Аффаном</summary><div class="body">
+    Усман потребовал воду, вымыл кисти трижды, прополоскал рот и нос, вымыл лицо трижды, руки до локтей трижды, протёр голову, вымыл ноги трижды и сказал: «Я видел Посланника Аллаха ﷺ совершающим омовение, подобное этому моему омовению» (аль-Бухари 159, Муслим 226).
+    <span class="src">Главный довод порядка действий и сунн.</span></div></details>
+  <details><summary>Намерение</summary><div class="body">
+    «Поистине, деяния оцениваются по намерениям» (аль-Бухари 1, Муслим 1907).
+    <span class="src">Довод шафиитов, маликитов, ханбалитов о необходимости намерения. Ханафиты говорят, что вода сама очищает по своей природе, а намерение нужно для вознаграждения.</span></div></details>
+  <details><summary>Пятки</summary><div class="body">
+    «Горе пяткам от Огня!» (аль-Бухари 60, Муслим 241).
+    <span class="src">Довод обязательности тщательного мытья ног, включая пятки.</span></div></details>
+  <details><summary>Протирание головы</summary><div class="body">
+    Описания омовения Пророка ﷺ: «…он протёр голову руками, проведя ими вперёд и назад» (аль-Бухари 185, Муслим 235). Это довод в пользу протирания всей головы. Хадис аль-Мугиры о протирании «чуба» — довод ханафитов и шафиитов.</div></details>
+  <details><summary>Последовательность и непрерывность</summary><div class="body">
+    Пророк ﷺ, по всем описаниям, совершал омовение в порядке, указанном в аяте, и без перерыва. Шафииты и ханбалиты видят в этом довод обязательности порядка; ханафиты и маликиты считают порядок сунной, так как в аяте стоит союз «и», не указывающий на очерёдность.</div></details>
+
+  <h3>Нарушители</h3>
+  <details><summary>Сон</summary><div class="body">
+    Сафван ибн Ассаль: «Он велел нам не снимать хуффы… кроме как из-за джунуб; но от мочи, стула и сна — не снимать» (ат-Тирмизи, ан-Насаи). Али ибн Аби Талиб: «Глаз — завязка заднего прохода; кто заснул, пусть совершит омовение» (Абу Дауд).</div></details>
+  <details><summary>Сомнения</summary><div class="body">
+    «Пусть не покидает молитву, пока не услышит звук или не почувствует запах» (аль-Бухари 137, Муслим 361).</div></details>
+  <details><summary>Половой орган</summary><div class="body">
+    «Кто коснулся своего полового органа, пусть совершит омовение» (Абу Дауд, ат-Тирмизи — хасан сахих). Ханафиты опираются на хадис Тальк ибн Али: «Это всего лишь часть тебя» (Абу Дауд).</div></details>
+  <details><summary>Мадхи</summary><div class="body">
+    Али: «Я был человеком, у которого часто выделялась мадхи… Пророк ﷺ сказал: „Вымой свой половой орган и совершай омовение“» (аль-Бухари 132, Муслим 303).</div></details>
+  <details><summary>Прикосновение к женщине</summary><div class="body">
+    Аят 5:6 «или вы касались женщин»; хадис Аиши, что Пророк ﷺ целовал некоторых жён и выходил на молитву, не совершая нового омовения (Абу Дауд, ат-Тирмизи; оценка сильно расходится) — довод ханафитов.</div></details>
+  <details><summary>Верблюжье мясо</summary><div class="body">
+    Спросили: «Совершать ли омовение после баранины?» — «Если хочешь». — «А после верблюжьей?» — «Да, совершайте» (Муслим 360).</div></details>
+
+  <h3>Гусль</h3>
+  <details open><summary>Порядок гусля</summary><div class="body">
+    Маймуна, да будет доволен ею Аллах, описала гусль Пророка ﷺ: вымыл кисти, смыл нечистоту с половых органов, совершил омовение, затем облил голову трижды, затем всё тело; отошёл и вымыл ноги (аль-Бухари 259, Муслим 317).</div></details>
+  <details><summary>Коса женщины</summary><div class="body">
+    Умм Саляма: «Я женщина, плотно заплетающая косу, распускать ли её для гусля?» — «Нет, достаточно трижды облить голову водой» (Муслим 330).</div></details>
+  <details><summary>Проникновение</summary><div class="body">
+    «Когда он сел между её четырьмя частями и прикоснулся обрезанное к обрезанному — обязателен гусль» (Муслим 349).</div></details>
+  <details><summary>Мани во сне</summary><div class="body">
+    Умм Саляма спросила: «Обязателен ли гусль женщине, увидевшей сон?» Он ответил: «Да, если она увидит влагу» (аль-Бухари 282, Муслим 313).</div></details>
+  <details><summary>Джунуб и Коран</summary><div class="body">
+    Али: «Ничто, кроме джунуба, не удерживало Пророка ﷺ от чтения Корана» (Абу Дауд, ат-Тирмизи, ан-Насаи). Большинство опирается на это; маликиты считают хадис недостаточно ясным.</div></details>
+
+  <div class="warn"><b>Оговорка о ссылках</b>Номера хадисов приводятся по общепринятым изданиям и могут отличаться в разных изданиях. Перед использованием в научных целях проверяйте по первоисточникам.</div>
+</section>
+
+<!-- ============ MORE ============ -->
+<section class="page" id="more">
+  <h2>Дополнительно</h2>
+
+  <h3>Вода для очищения</h3>
+  <div class="card"><ul class="clean" style="margin:0">
+    <li><b>Чистая очищающая вода (мутлак):</b> дождевая, из колодца, реки, моря, талая — подходит для очищения.</li>
+    <li><b>Вода, изменённая нечистотой</b> (цвет, вкус, запах) — непригодна.</li>
+    <li><b>Использованная вода</b> (стёкшая с тела при омовении): по мнению большинства, сама повторно не очищает; в мазхабах есть уточнения.</li>
+    <li>Если воду смешали с чем-то чистым, но она осталась водой по названию, — годится (у большинства).</li>
+  </ul></div>
+
+  <h3>Протирание хуффов (мас'х)</h3>
+  <p>Вместо мытья ног можно протирать кожаные носки (хуффы) при выполнении условий:</p>
+  <ul class="clean">
+    <li>надеть хуффы после полного омовения;</li>
+    <li>хуффы закрывают ноги до щиколоток, чистые, без дыр (в ряде мазхабов — допустимы небольшие);</li>
+    <li>срок: <b>сутки для постоянного жителя, три суток для путника</b> (Муслим 276);</li>
+    <li>протирают верхнюю часть мокрой рукой по одному разу, от пальцев к голени;</li>
+    <li>мас'х не заменяет гусль — перед гуслем хуффы снимают.</li>
+  </ul>
+  <div class="note"><b>Довод</b>Аль-Мугира: «Я видел, как Пророк ﷺ совершил омовение и протёр хуффы» (аль-Бухари 203, Муслим 274).</div>
+
+  <h3>Тайаммум (очищение землёй)</h3>
+  <ul class="clean">
+    <li>Допускается при отсутствии воды или невозможности её использовать (болезнь, вред, сильный холод).</li>
+    <li>Берут чистую пыль/землю (по мазхабам: ханафиты — любая порода земли; шафииты, ханбалиты — пыль).</li>
+    <li>Удар ладонями по земле — протереть лицо и руки (до запястий или до локтей — разные мнения).</li>
+    <li>Заменяет и омовение, и гусль; нарушается всем, что нарушает омовение, и появлением воды.</li>
+  </ul>
+
+  <h3>Частые ошибки</h3>
+  <div class="grid">
+    <div class="card"><b>❌ Пропущенные пятки и локти</b><br>Самые частые места пропуска. Проводите рукой.</div>
+    <div class="card"><b>❌ Лак для ногтей</b><br>Для женщин — снять перед омовением. Хна допустима, она не создаёт слоя.</div>
+    <div class="card"><b>❌ Расточительство</b><br>Не оставляйте воду течь без нужды.</div>
+    <div class="card"><b>❌ Лишнее давление сомнений</b><br>Поддаваться наваждению (васвас) — не нужно. Опирайтесь на правило уверенности.</div>
+    <div class="card"><b>❌ Пропуск полоскания рта/носа в гусле</b><br>Для ханафитов и ханбалитов это фард.</div>
+    <div class="card"><b>❌ Забыть место и вспомнить позже</b><br>Вымойте забытое место, а там, где порядок обязателен (шафииты, ханбалиты), — ещё и всё после него; при долгом перерыве маликиты и ханбалиты велят начать заново.</div>
+  </div>
+
+  <h3>Постоянные выделения и болезнь</h3>
+  <p>Тот, у кого постоянное недержание (моча, мадхи, кровь истихады), совершает омовение для каждого времени молитвы (по мнению ханафитов, ханбалитов) или для каждой обязательной молитвы (шафииты). Подробности зависят от случая — спросите учёного.</p>
+
+  <h3>Дуа до и после</h3>
+  <div class="dua"><div class="ar">بِسْمِ اللّٰهِ</div><small>«Бисмилляhи» — перед началом</small></div>
+  <div class="dua"><div class="ar">اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</div>
+    <small>«Аллахумма-дж'ални мин ат-таууабина ва-дж'ални мин аль-мутатаххирина»</small>
+    <small>О Аллах, сделай меня из раскаивающихся и сделай меня из очищающихся (ат-Тирмизи 55)</small></div>
+</section>
+
+</main>
+
+<footer>
+  Справочное приложение по фикху очищения. Информация изложена обобщённо и не заменяет вопрос к учёному.<br>
+  Пусть Аллах примет ваши деяния. 🤲
+</footer>
+
+<script>
+(function(){
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+  // ---- tabs ----
+  function show(id){
+    if(!document.getElementById(id)) id='home';
+    $$('.page').forEach(function(p){p.classList.toggle('on',p.id===id)});
+    $$('.tab').forEach(function(t){t.classList.toggle('on',t.dataset.p===id)});
+    var t=$('.tab.on'); if(t&&t.scrollIntoView) t.scrollIntoView({inline:'center',block:'nearest'});
+    window.scrollTo(0,0);
+    if(location.hash!=='#'+id) history.replaceState(null,'','#'+id);
+  }
+  $$('.tab').forEach(function(t){t.addEventListener('click',function(){show(t.dataset.p)})});
+  $$('[data-go]').forEach(function(t){t.addEventListener('click',function(){show(t.dataset.go)})});
+  show(location.hash.slice(1)||'home');
+
+  // ---- madhhab ----
+  var sums={
+    hanafi:'<b>Ханафитский мазхаб.</b> Омовение: 4 фарда (лицо, руки, четверть головы, ноги). Гусль: 3 фарда (рот, нос, всё тело). Намерение — сунна. Кровь и рвота нарушают омовение; прикосновение к женщине и половому органу — нет.',
+    maliki:'<b>Маликитский мазхаб.</b> Омовение: 7 фардов (намерение, лицо, руки, вся голова, ноги, муваляат, далк). Гусль требует намерения, растирания и непрерывности. Прикосновение к женщине с желанием нарушает омовение.',
+    shafii:'<b>Шафиитский мазхаб.</b> Омовение: 6 фардов (намерение, лицо, руки, часть головы, ноги, тартиб). Гусль: намерение и омовение всего тела. Касание кожей чужой женщины нарушает омовение.',
+    hanbali:'<b>Ханбалитский мазхаб.</b> Омовение: 6 фардов (лицо с ртом и носом, руки, вся голова, ноги, тартиб, муваляат); намерение — условие. Верблюжье мясо нарушает омовение.'
+  };
+  function setM(m){
+    if(m){document.body.setAttribute('data-m',m);$('#mysum').innerHTML=sums[m]}
+    else{document.body.removeAttribute('data-m');$('#mysum').innerHTML=''}
+    $$('.chip').forEach(function(c){c.classList.toggle('on',c.dataset.m===(m||''))});
+    store('m',m||'');
+  }
+  $$('.chip').forEach(function(c){c.addEventListener('click',function(){setM(c.dataset.m)})});
+  setM(store('m')||'');
+
+  // ---- step trackers ----
+  function tracker(boxId,barId,txtId,resetId,key){
+    var steps=$$('.step',$('#'+boxId));
+    var saved=[];try{saved=JSON.parse(store(key)||'[]')}catch(e){}
+    steps.forEach(function(s,i){
+      if(saved.indexOf(i)>-1)s.classList.add('done');
+      s.addEventListener('click',function(){s.classList.toggle('done');upd()});
+    });
+    function upd(){
+      var d=[];steps.forEach(function(s,i){if(s.classList.contains('done'))d.push(i)});
+      $('#'+barId).style.width=(d.length/steps.length*100)+'%';
+      $('#'+txtId).textContent=d.length+' из '+steps.length+(d.length===steps.length?' — Ма шаа Аллах!':'');
+      store(key,JSON.stringify(d));
+    }
+    $('#'+resetId).addEventListener('click',function(){steps.forEach(function(s){s.classList.remove('done')});upd()});
+    upd();
+  }
+  tracker('wsteps','wbar','wtxt','wreset','wudu');
+  tracker('gsteps','gbar','gtxt','greset','ghusl');
+})();
+</script>
+</body>
+</html>
